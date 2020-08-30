@@ -35,6 +35,12 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{asset('assets/backend/css/themes/all-themes.css')}}" rel="stylesheet" />
+
+    <!-- JQuery DataTable Css -->
+    <link href="{{asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css')}}"
+          rel="stylesheet">
+    <!-- toastr -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     @stack('css')
 
 </head>
@@ -99,33 +105,36 @@
 <!-- Waves Effect Plugin Js -->
 <script src="{{asset('assets/backend/plugins/node-waves/waves.js')}}"></script>
 
-<!-- Jquery CountTo Plugin Js -->
-<script src="{{asset('assets/backend/plugins/jquery-countto/jquery.countTo.js')}}"></script>
-
-<!-- Morris Plugin Js -->
-<script src="{{asset('assets/backend/plugins/raphael/raphael.min.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/morrisjs/morris.js')}}"></script>
-
-<!-- ChartJs -->
-<script src="{{asset('assets/backend/plugins/chartjs/Chart.bundle.js')}}"></script>
-
-<!-- Flot Charts Plugin Js -->
-<script src="{{asset('assets/backend/plugins/flot-charts/jquery.flot.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/flot-charts/jquery.flot.resize.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/flot-charts/jquery.flot.pie.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/flot-charts/jquery.flot.categories.js')}}"></script>
-<script src="{{asset('assets/backend/plugins/flot-charts/jquery.flot.time.js')}}"></script>
-
-<!-- Sparkline Chart Plugin Js -->
-<script src="{{asset('assets/backend/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
-
 <!-- Custom Js -->
 <script src="{{asset('assets/backend/js/admin.js')}}"></script>
-<script src="{{asset('assets/backend/js/pages/index.js')}}"></script>
+
 
 <!-- Demo Js -->
 <script src="{{asset('assets/backend/js/demo.js')}}"></script>
 
+<!-- Jquery DataTable Plugin Js -->
+<script src="{{asset('assets/backend/plugins/jquery-datatable/jquery.dataTables.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/buttons.flash.min.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/jszip.min.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/pdfmake.min.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/vfs_fonts.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/buttons.html5.min.js')}}"></script>
+<script src="{{asset('assets/backend/plugins/jquery-datatable/extensions/export/buttons.print.min.js')}}"></script>
+<!-- toastr -->
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+    @if($errors->any())
+        @foreach($errors->all() as $error)
+            toastr.error('{{$error}}', 'Error',{
+                closeButton:true,
+                progressBar:true,
+            });
+        @endforeach
+    @endif
+</script>
+{!! Toastr::message() !!}
 @stack('js')
 </body>
 </html>

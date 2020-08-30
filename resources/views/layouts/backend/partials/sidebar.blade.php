@@ -42,6 +42,12 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
+                <li class="{{Request::is('admin/tag*') ? 'active' : ''}}">
+                    <a href="{{route('admin.tag.index')}}">
+                        <i class="material-icons">label</i>
+                        <span>Tag</span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
                         <i class="material-icons">assignment</i>

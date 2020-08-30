@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['as'=>'admin.', 'prefix'=>'admin', 'namespace'=>'Admin'], function (){
     Route::get('dashboard', 'DashboardController@index')->name('dashboard');
+    Route::resource('tag', 'TagController');
+
 
 });
 

@@ -19,6 +19,8 @@
     <link href="{{asset('assets/frontend/common-css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/common-css/swiper.css')}}" rel="stylesheet">
     <link href="{{asset('assets/frontend/common-css/ionicons.css')}}" rel="stylesheet">
+    <!-- toastr -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     @stack('css')
 
 </head>
@@ -35,6 +37,9 @@
 <script src="{{asset('assets/frontend/common-js/tether.min.js')}}"></script>
 <script src="{{asset('assets/frontend/common-js/bootstrap.js')}}"></script>
 <script src="{{asset('assets/frontend/common-js/scripts.js')}}"></script>
+<!-- toastr -->
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
 @stack('js')
 </body>
 </html>
