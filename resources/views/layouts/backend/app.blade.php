@@ -38,7 +38,7 @@
     @stack('css')
 
 </head>
-<body class="theme-blue">
+<body class="theme-cyan">
 <!-- Page Loader -->
 <div class="page-loader-wrapper">
     <div class="loader">

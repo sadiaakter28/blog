@@ -12,11 +12,19 @@
                 <ul class="dropdown-menu pull-right">
                     <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                     <li role="separator" class="divider"></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                    <li role="separator" class="divider"></li>
-                    <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+
+                    <li>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <i class="material-icons">input</i>
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -26,56 +34,88 @@
     <div class="menu">
         <ul class="list">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
-                <a href="{{route('admin.dashboard')}}">
-                    <i class="material-icons">home</i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">assignment</i>
-                    <span>Forms</span>
-                </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/form-examples.html">Form Examples</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/form-validation.html">Form Validation</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/form-wizard.html">Form Wizard</a>
-                    </li>
-                    <li>
-                        <a href="pages/forms/editors.html">Editors</a>
-                    </li>
-                </ul>
-            </li>
 
-            <li class="header">LABELS</li>
-            <li>
-                <a href="javascript:void(0);">
-                    <i class="material-icons col-red">donut_large</i>
-                    <span>Important</span>
-                </a>
-            </li>
+            @if(Request::is('admin*'))
+                <li class="{{Request::is('admin/dashboard') ? 'active' : ''}}">
+                    <a href="{{route('admin.dashboard')}}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Forms</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="pages/forms/basic-form-elements.html">Basic Form Elements</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/advanced-form-elements.html">Advanced Form Elements</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/form-examples.html">Form Examples</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/form-validation.html">Form Validation</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/form-wizard.html">Form Wizard</a>
+                        </li>
+                        <li>
+                            <a href="pages/forms/editors.html">Editors</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="header">SYSTEM</li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <i class="material-icons">input</i>
+                        <span>Logout</span>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+            @endif
+
+            @if(Request::is('author*'))
+                <li class="{{Request::is('admin/dashboard') ? 'active' : ''}}">
+                    <a href="{{route('admin.dashboard')}}">
+                        <i class="material-icons">dashboard</i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="header">SYSTEM</li>
+                <li>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <i class="material-icons">input</i>
+                        <span>Logout</span>
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </li>
+
+            @endif
         </ul>
     </div>
     <!-- #Menu -->
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+            &copy; 2020 <a href="javascript:void(0);">Blog</a>.
         </div>
         <div class="version">
-            <b>Version: </b> 1.0.5
+            <b>Version: </b> 1.0.1
         </div>
     </div>
     <!-- #Footer -->
